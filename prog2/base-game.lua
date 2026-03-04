@@ -41,7 +41,7 @@ local function interactWithCard(userUUID, mode, money)
 end
 
 --init code
-money, playerUUID, username = interactWithCard(nil, "getBalance", nil)
+local money, playerUUID, username = interactWithCard(nil, "getBalance", nil)
 
 --update bal code after you change money
 interactWithCard(playerUUID, "updateBalance", money)
