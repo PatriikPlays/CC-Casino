@@ -1,6 +1,6 @@
 --Slot
 
-if fs.exists("disk/terminate") then
+if fs.exists("/disk/terminate") then
     error("terminated for debugging")
 end
 _G.os.pullEvent = _G.os.pullEventRaw
@@ -70,6 +70,7 @@ local function main()
 
             local randNum = math.random(1, 15)
 
+            print("")
             if randNum == guess then
                 money = money + bet * 2
                 interactWithCard(playerUUID, "updateBalance", money)
@@ -82,8 +83,10 @@ local function main()
                 print("The correct number was", randNum)
                 print("you have $", money, "left over")
             end
-            sleep(3)
+        else
+            print("Invalid bet")
         end
+        sleep(3)
     end
 end
 
@@ -93,7 +96,7 @@ while true do
 
     if not s then
         clear()
-        printError("Error: ", e)
+        printError("Error:", e)
         printError("Press any key to continue (or auto restarting in 30 seconds)...")
 
         parallel.waitForAny(function()
